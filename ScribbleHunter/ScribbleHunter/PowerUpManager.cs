@@ -1,4 +1,4 @@
-//#define IS_FREE_VERSION
+#define IS_FREE_VERSION
 
 using System;
 using System.Collections.Generic;

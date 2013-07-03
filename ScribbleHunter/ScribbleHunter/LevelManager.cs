@@ -111,6 +111,14 @@ namespace ScribbleHunter
             }
         }
 
+        public void SetLevel(int level)
+        {
+            currentLevel = level;
+
+            SetLevelAll(currentLevel);
+        }
+
+
         public void Reset()
         {
             levelState = LevelStates.Starting;
@@ -155,13 +163,6 @@ namespace ScribbleHunter
             {
                 return currentLevel;
             }
-        }
-
-        public void SetLevel(int level)
-        {
-            currentLevel = level;
-
-            SetLevelAll(currentLevel);
         }
 
         /// <summary>

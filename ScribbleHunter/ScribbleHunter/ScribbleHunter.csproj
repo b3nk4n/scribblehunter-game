@@ -113,7 +113,6 @@
     <Compile Include="VibrationManager.cs" />
     <Compile Include="Wave.cs" />
     <Compile Include="WaveEntity.cs" />
-    <Compile Include="WaveInfo.cs" />
     <Compile Include="ZoomText.cs" />
     <Compile Include="ZoomTextManager.cs" />
     <None Include="Properties\AppManifest.xml">
@@ -135,8 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ScribbleHunterContent\ScribbleHunterContent.contentproj">
-      <Name>ScribbleHunterContent</Name>
+      <Name>ScribbleHunterContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{3CDAEB21-3B2A-4A38-830D-7D7A057A66AA}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

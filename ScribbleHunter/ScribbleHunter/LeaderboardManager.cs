@@ -63,6 +63,7 @@ namespace ScribbleHunter
 
         private const string PSEUDO_PHONE_ID = "##00000000000000000000000000000000";
 
+        private const string SECURITY = "scribblehunter_sec";
         private const string ANID = "ANID";
         private const string SUBMIT_FORMAT = "http://bsautermeister.de/scribblehunter/newscore.php?Method={0}&PhoneID={1}&Name={2}&Score={3}&Level={4}&Version={5}&Hash={6}";
         private const string RECEIVE_FORMAT = "http://bsautermeister.de/scribblehunter/requestscores.php?Method=TOP10PHONE&PhoneID={0}";
@@ -173,7 +174,8 @@ namespace ScribbleHunter
                 version = FULL_SIGN;
 #endif
 
-            string hash = MD5Core.GetHashString(phoneid + name + score + level + version).ToLower();
+            string pw = SECURITY;
+            string hash = MD5Core.GetHashString(phoneid + name + score + level + version + pw).ToLower();
             if (!wc.IsBusy)
             {
                 if (method.Equals(RESUBMIT))

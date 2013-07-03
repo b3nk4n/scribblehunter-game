@@ -76,7 +76,7 @@ namespace ScribbleHunter
         private readonly Rectangle formContentSource = new Rectangle(500, 1350,
                                                                      160, 60);
         private readonly Rectangle formRightSource = new Rectangle(670, 1350,
-                                                                   90, 60);
+                                                                   70, 60);
         private readonly Rectangle formClickDestination = new Rectangle(60, 372,
                                                                    360, 60);
 

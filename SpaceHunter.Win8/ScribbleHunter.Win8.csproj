@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{758FD6F9-3DE5-48B0-8038-5C0F28E12DE5}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpaceHunter.Win8</RootNamespace>
+    <AssemblyName>SpaceHunter.Win8</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>SpaceHunter.Win8_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <PackageCertificateThumbprint>E979ECD376C6ABBA88A914958FEABA177222A30E</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Windows8\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Windows8\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Windows8\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\Windows8\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Windows8\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\Windows8\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Windows8\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\Windows8\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AccelerometerHelper\AccelerometerHelper.cs" />
+    <Compile Include="AccelerometerHelper\ApplicationSettingHelper.cs" />
+    <Compile Include="AccelerometerHelper\Simple3DVector.cs" />
+    <Compile Include="Boss.cs" />
+    <Compile Include="BossManager.cs" />
+    <Compile Include="CollisionManager.cs" />
+    <Compile Include="DamageExplosion.cs" />
+    <Compile Include="DamageExplosionManager.cs" />
+    <Compile Include="EffectManager.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="EnemyManager.cs" />
+    <Compile Include="EnemyType.cs" />
+    <Compile Include="Extensions\SpriteBatchExtensions.cs" />
+    <Compile Include="HandManager.cs" />
+    <Compile Include="HelpManager.cs" />
+    <Compile Include="Highscore.cs" />
+    <Compile Include="HighscoreManager.cs" />
+    <Compile Include="Hud.cs" />
+    <Compile Include="ILevel.cs" />
+    <Compile Include="Inputs\GameInput.cs" />
+    <Compile Include="Inputs\GamepadHelper.cs" />
+    <Compile Include="Inputs\GestureDefinition.cs" />
+    <Compile Include="Inputs\Input.cs" />
+    <Compile Include="Inputs\KeyboardHelper.cs" />
+    <Compile Include="Inputs\MouseHelper.cs" />
+    <Compile Include="LeaderboardManager.cs" />
+    <Compile Include="LevelManager.cs" />
+    <Compile Include="LiveTile\LiveTileHelper.cs" />
+    <Compile Include="MainMenuManager.cs" />
+    <Compile Include="MD5.cs" />
+    <Compile Include="Particle.cs" />
+    <Compile Include="DeviceControlManager.cs" />
+    <Compile Include="PlayerManager.cs" />
+    <Compile Include="PowerUp.cs" />
+    <Compile Include="PowerUpManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScribbleHunterWindows.cs" />
+    <Compile Include="SettingsManager.cs" />
+    <Compile Include="ShotManager.cs" />
+    <Compile Include="SoundManager.cs" />
+    <Compile Include="Sprite.cs" />
+    <Compile Include="StarFieldManager.cs" />
+    <Compile Include="SubmissionManager.cs" />
+    <Compile Include="VibrationManager.cs" />
+    <Compile Include="Wave.cs" />
+    <Compile Include="WaveEntity.cs" />
+    <Compile Include="ZoomText.cs" />
+    <Compile Include="ZoomTextManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Fonts\Pericles20.xnb">
+      <Link>Content\Fonts\Pericles20.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Fonts\Pericles22.xnb">
+      <Link>Content\Fonts\Pericles22.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Fonts\Pericles32.xnb">
+      <Link>Content\Fonts\Pericles32.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\DirectReload.xnb">
+      <Link>Content\Sounds\DirectReload.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\EnemyRocket.xnb">
+      <Link>Content\Sounds\EnemyRocket.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Explosion1.xnb">
+      <Link>Content\Sounds\Explosion1.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Explosion2.xnb">
+      <Link>Content\Sounds\Explosion2.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Explosion3.xnb">
+      <Link>Content\Sounds\Explosion3.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Explosion4.xnb">
+      <Link>Content\Sounds\Explosion4.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\FastReload.xnb">
+      <Link>Content\Sounds\FastReload.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\GameSound.xnb">
+      <Link>Content\Sounds\GameSound.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Hit1.xnb">
+      <Link>Content\Sounds\Hit1.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Hit2.xnb">
+      <Link>Content\Sounds\Hit2.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Hit3.xnb">
+      <Link>Content\Sounds\Hit3.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Hit4.xnb">
+      <Link>Content\Sounds\Hit4.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Hit5.xnb">
+      <Link>Content\Sounds\Hit5.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Hit6.xnb">
+      <Link>Content\Sounds\Hit6.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Large.xnb">
+      <Link>Content\Sounds\Large.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\LargeExplosion.xnb">
+      <Link>Content\Sounds\LargeExplosion.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Laser.xnb">
+      <Link>Content\Sounds\Laser.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Mine.xnb">
+      <Link>Content\Sounds\Mine.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Mines.xnb">
+      <Link>Content\Sounds\Mines.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Paper1.xnb">
+      <Link>Content\Sounds\Paper1.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Paper2.xnb">
+      <Link>Content\Sounds\Paper2.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Paper3.xnb">
+      <Link>Content\Sounds\Paper3.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Piep.xnb">
+      <Link>Content\Sounds\Piep.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Rocket.xnb">
+      <Link>Content\Sounds\Rocket.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Shot1.xnb">
+      <Link>Content\Sounds\Shot1.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Shot2.xnb">
+      <Link>Content\Sounds\Shot2.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Sonic.xnb">
+      <Link>Content\Sounds\Sonic.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Star.xnb">
+      <Link>Content\Sounds\Star.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\TimeFreeze.xnb">
+      <Link>Content\Sounds\TimeFreeze.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\Writing.xnb">
+      <Link>Content\Sounds\Writing.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Textures\HandSheet.xnb">
+      <Link>Content\Textures\HandSheet.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Textures\Inputs.xnb">
+      <Link>Content\Textures\Inputs.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Textures\Keyboard.xnb">
+      <Link>Content\Textures\Keyboard.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Textures\MenuSheet.xnb">
+      <Link>Content\Textures\MenuSheet.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Textures\PaperSheet.xnb">
+      <Link>Content\Textures\PaperSheet.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Textures\PlanetSheet.xnb">
+      <Link>Content\Textures\PlanetSheet.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Textures\PowerUpSheet.xnb">
+      <Link>Content\Textures\PowerUpSheet.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Textures\SpriteSheet.xnb">
+      <Link>Content\Textures\SpriteSheet.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Package.StoreAssociation.xml" />
+    <None Include="SpaceHunter.Win8_StoreKey.pfx" />
+    <None Include="SpaceHunter.Win8_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\ScribbleHunter\ScribbleHunter\bin\Windows Phone\Release\Content\Sounds\GameSound.wma">
+      <Link>Content\Sounds\GameSound.wma</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\SmallLogo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\StoreLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Development\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows8.csproj">
+      <Project>{0518563c-acca-4a14-8c5d-ddbe93e2605f}</Project>
+      <Name>MonoGame.Framework.Windows8</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SharpDX">
+      <HintPath>..\..\..\..\Development\SharpDX\Bin\Standard-winrt\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1">
+      <HintPath>..\..\..\..\Development\SharpDX\Bin\Standard-winrt\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11">
+      <HintPath>..\..\..\..\Development\SharpDX\Bin\Standard-winrt\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI">
+      <HintPath>..\..\..\..\Development\SharpDX\Bin\Standard-winrt\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.MediaFoundation">
+      <HintPath>..\..\..\..\Development\SharpDX\Bin\Standard-winrt\SharpDX.MediaFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XAudio2">
+      <HintPath>..\..\..\..\Development\SharpDX\Bin\Standard-winrt\SharpDX.XAudio2.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XInput">
+      <HintPath>..\..\..\..\Development\SharpDX\Bin\Standard-winrt\SharpDX.XInput.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

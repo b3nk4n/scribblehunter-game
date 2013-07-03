@@ -1,4 +1,4 @@
-//#define IS_FREE_VERSION
+#define IS_FREE_VERSION
 
 using System;
 using Microsoft.Xna.Framework;
@@ -132,7 +132,6 @@ namespace ScribbleHunter
 
                 powerUpManager.Update(gameTime);
                 enemyManager.Update(elapsed);
-                return;
             }
             else if (progressTimer < WelcomeLimit)
             {
@@ -396,14 +395,14 @@ namespace ScribbleHunter
 
         private void loadHasDoneInstructions()
         {
-            isInvalidated = false;
-
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
                 bool hasExisted = isf.FileExists(INSTRUCTION_FILE);
 
                 using (IsolatedStorageFileStream isfs = new IsolatedStorageFileStream(INSTRUCTION_FILE, FileMode.OpenOrCreate, FileAccess.ReadWrite, isf))
                 {
+                    isInvalidated = false;
+
                     if (hasExisted)
                     {
                         using (StreamReader sr = new StreamReader(isfs))
@@ -469,6 +468,14 @@ namespace ScribbleHunter
             get
             {
                 return this.isAutostarted;
+            }
+        }
+
+        public bool EnougthInstructionsDone
+        {
+            get
+            {
+                return (progressTimer > 5.0f);
             }
         }
 

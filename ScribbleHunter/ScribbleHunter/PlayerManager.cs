@@ -1,4 +1,4 @@
-//#define IS_FREE_VERSION
+#define IS_FREE_VERSION
 
 using System;
 using Microsoft.Xna.Framework;
@@ -265,7 +265,7 @@ namespace ScribbleHunter
                 shotDirection.Normalize();
 
                 PlayerShotManager.FireShot(
-                    fireLocation + shotDirection * 20,// - new Vector2(9, 8),
+                    fireLocation + shotDirection * 20,
                     shotDirection,
                     true,
                     Color.Purple,
@@ -440,7 +440,7 @@ namespace ScribbleHunter
                     shotTimer -= elapsed;
                 }
 
-                if (canReloadPeep && shotTimer < 0)
+                if (canReloadPeep && CanFire)
                 {
                     SoundManager.PlayPiepSound();
                     canReloadPeep = false;
@@ -459,14 +459,16 @@ namespace ScribbleHunter
                     playerSprite.Velocity.Normalize();
                 }
 
-                playerSprite.Velocity *= ((playerSpeed) * startUpScale);
+                float startFactor = (float)Math.Pow(startUpScale, 2.0);
+
+                playerSprite.Velocity *= ((playerSpeed) * startFactor);
                 playerSprite.RotateTo(playerSprite.Velocity);
                 playerSprite.Update(elapsed);
                 adaptMovementLimits();
 
                 updateScoreTimer(elapsed);
 
-                this.playerSprite.TintColor = Color.Purple * startUpScale * StarTimeOpacityFactor;
+                this.playerSprite.TintColor = Color.Purple * startFactor * StarTimeOpacityFactor;
             }
 
             updateComboScore(elapsed);
@@ -859,6 +861,14 @@ namespace ScribbleHunter
             get
             {
                 return this.shotTimer;
+            }
+        }
+
+        public bool CanFire
+        {
+            get
+            {
+                return this.shotTimer < 0;
             }
         }
 

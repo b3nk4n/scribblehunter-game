@@ -12,6 +12,8 @@ namespace ScribbleHunter
     {
         #region Members
 
+        private const string SETTINGS_FILE = "settings.txt";
+
         private static SettingsManager settingsManager;
 
         private static Texture2D texture;
@@ -57,7 +59,6 @@ namespace ScribbleHunter
         private const string MusicAction = "Music";
         private const string SfxAction = "SFX";
         private const string VibrationAction = "Vibration";
-        private const string NeutralPositionAction = "NeutralPos";
 
         private const string ON = "ON";
         private const string OFF = "OFF";
@@ -140,22 +141,22 @@ namespace ScribbleHunter
 
         private void handleTouchInputs()
         {
+            // Vibration
+            if (GameInput.IsPressed(VibrationAction))
+            {
+                toggleVibration();
+                SoundManager.PlayPaperSound();
+            }
             // Music
-            if (GameInput.IsPressed(MusicAction))
+            else if (GameInput.IsPressed(MusicAction))
             {
                 toggleMusic();
                 SoundManager.PlayPaperSound();
             }
             // Sfx
-            if (GameInput.IsPressed(SfxAction))
+            else if (GameInput.IsPressed(SfxAction))
             {
                 toggleSfx();
-                SoundManager.PlayPaperSound();
-            }
-            // Vibration
-            if (GameInput.IsPressed(VibrationAction))
-            {
-                toggleVibration();
                 SoundManager.PlayPaperSound();
             }
         }
@@ -352,7 +353,7 @@ namespace ScribbleHunter
 
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                using (IsolatedStorageFileStream isfs = new IsolatedStorageFileStream("settings.txt", FileMode.Create, isf))
+                using (IsolatedStorageFileStream isfs = new IsolatedStorageFileStream(SETTINGS_FILE, FileMode.Create, isf))
                 {
                     using (StreamWriter sw = new StreamWriter(isfs))
                     {
@@ -372,9 +373,9 @@ namespace ScribbleHunter
         {
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                bool hasExisted = isf.FileExists(@"settings.txt");
+                bool hasExisted = isf.FileExists(SETTINGS_FILE);
 
-                using (IsolatedStorageFileStream isfs = new IsolatedStorageFileStream(@"settings.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite, isf))
+                using (IsolatedStorageFileStream isfs = new IsolatedStorageFileStream(SETTINGS_FILE, FileMode.OpenOrCreate, FileAccess.ReadWrite, isf))
                 {
                     if (hasExisted)
                     {

@@ -105,6 +105,8 @@ namespace ScribbleHunter
         {
             int count = Int32.Parse(reader.ReadLine());
 
+            damageExplosions.Clear();
+
             for (int i = 0; i < count; i++)
             {
                 DamageExplosion de = new DamageExplosion();

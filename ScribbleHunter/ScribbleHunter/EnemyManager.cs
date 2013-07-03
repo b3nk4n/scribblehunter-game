@@ -1,4 +1,4 @@
-//#define IS_FREE_VERSION
+#define IS_FREE_VERSION
 
 using System;
 using System.Collections.Generic;
@@ -40,10 +40,6 @@ namespace ScribbleHunter
         private float nextSingleEnemyMinTimer;
         public const float InitialNextSingleEnemyMaxTimer = 3.0f;
         private float nextSingleEnemyMaxTimer;
-
-        private List<List<Vector2>> pathWayPoints = new List<List<Vector2>>(32);
-
-        private Dictionary<int, WaveInfo> waveSpawns = new Dictionary<int, WaveInfo>(16);
 
         private List<Wave> waves = new List<Wave>(32);
 
@@ -515,6 +511,188 @@ namespace ScribbleHunter
             entry14_18.AddRoutePoint(new Vector2(25, 740));
             wave14.AddEntry(entry14_18);
             waves.Add(wave14);
+
+            /* since Version 1.3 */
+
+            Wave wave15 = new Wave();
+            WaveEntity entry15_1 = new WaveEntity(new Vector2(240, 250));
+            entry15_1.AddRoutePoint(new Vector2(240, 550));
+            wave15.AddEntry(entry15_1);
+            WaveEntity entry15_2 = new WaveEntity(new Vector2(205, 230));
+            entry15_2.AddRoutePoint(new Vector2(205, 530));
+            wave15.AddEntry(entry15_2);
+            WaveEntity entry15_3 = new WaveEntity(new Vector2(275, 230));
+            entry15_3.AddRoutePoint(new Vector2(275, 530));
+            wave15.AddEntry(entry15_3);
+            WaveEntity entry15_4 = new WaveEntity(new Vector2(170, 210));
+            entry15_4.AddRoutePoint(new Vector2(170, 510));
+            wave15.AddEntry(entry15_4);
+            WaveEntity entry15_5 = new WaveEntity(new Vector2(310, 210));
+            entry15_5.AddRoutePoint(new Vector2(310, 510));
+            wave15.AddEntry(entry15_5);
+            WaveEntity entry15_6 = new WaveEntity(new Vector2(135, 190));
+            entry15_6.AddRoutePoint(new Vector2(135, 490));
+            wave15.AddEntry(entry15_6);
+            WaveEntity entry15_7 = new WaveEntity(new Vector2(345, 190));
+            entry15_7.AddRoutePoint(new Vector2(345, 490));
+            wave15.AddEntry(entry15_7);
+            WaveEntity entry15_8 = new WaveEntity(new Vector2(100, 170));
+            entry15_8.AddRoutePoint(new Vector2(100, 470));
+            wave15.AddEntry(entry15_8);
+            WaveEntity entry15_9 = new WaveEntity(new Vector2(380, 170));
+            entry15_9.AddRoutePoint(new Vector2(380, 470));
+            wave15.AddEntry(entry15_9);
+            WaveEntity entry15_10 = new WaveEntity(new Vector2(65, 150));
+            entry15_10.AddRoutePoint(new Vector2(65, 450));
+            wave15.AddEntry(entry15_10);
+            WaveEntity entry15_11 = new WaveEntity(new Vector2(415, 150));
+            entry15_11.AddRoutePoint(new Vector2(415, 450));
+            wave15.AddEntry(entry15_11);
+            waves.Add(wave15);
+
+            Wave wave16 = new Wave();
+            WaveEntity entry16_1 = new WaveEntity(new Vector2(240, 250));
+            entry16_1.AddRoutePoint(new Vector2(240, 550));
+            wave16.AddEntry(entry16_1);
+            WaveEntity entry16_2 = new WaveEntity(new Vector2(205, 230));
+            entry16_2.AddRoutePoint(new Vector2(205, 550));
+            wave16.AddEntry(entry16_2);
+            WaveEntity entry16_3 = new WaveEntity(new Vector2(275, 230));
+            entry16_3.AddRoutePoint(new Vector2(275, 550));
+            wave16.AddEntry(entry16_3);
+            WaveEntity entry16_4 = new WaveEntity(new Vector2(170, 210));
+            entry16_4.AddRoutePoint(new Vector2(170, 550));
+            wave16.AddEntry(entry16_4);
+            WaveEntity entry16_5 = new WaveEntity(new Vector2(310, 210));
+            entry16_5.AddRoutePoint(new Vector2(310, 550));
+            wave16.AddEntry(entry16_5);
+            WaveEntity entry16_6 = new WaveEntity(new Vector2(135, 190));
+            entry16_6.AddRoutePoint(new Vector2(135, 550));
+            wave16.AddEntry(entry16_6);
+            WaveEntity entry16_7 = new WaveEntity(new Vector2(345, 190));
+            entry16_7.AddRoutePoint(new Vector2(345, 550));
+            wave16.AddEntry(entry16_7);
+            WaveEntity entry16_8 = new WaveEntity(new Vector2(100, 170));
+            entry16_8.AddRoutePoint(new Vector2(100, 550));
+            wave16.AddEntry(entry16_8);
+            WaveEntity entry16_9 = new WaveEntity(new Vector2(380, 170));
+            entry16_9.AddRoutePoint(new Vector2(380, 550));
+            wave16.AddEntry(entry16_9);
+            WaveEntity entry16_10 = new WaveEntity(new Vector2(65, 150));
+            entry16_10.AddRoutePoint(new Vector2(65, 550));
+            wave16.AddEntry(entry16_10);
+            WaveEntity entry16_11 = new WaveEntity(new Vector2(415, 150));
+            entry16_11.AddRoutePoint(new Vector2(415, 550));
+            wave16.AddEntry(entry16_11);
+            waves.Add(wave16);
+
+            Wave wave17 = new Wave();
+            WaveEntity entry17_1 = new WaveEntity(new Vector2(240, 450));
+            entry17_1.AddRoutePoint(new Vector2(240, 250));
+            wave17.AddEntry(entry17_1);
+            WaveEntity entry17_2 = new WaveEntity(new Vector2(205, 470));
+            entry17_2.AddRoutePoint(new Vector2(205, 230));
+            wave17.AddEntry(entry17_2);
+            WaveEntity entry17_3 = new WaveEntity(new Vector2(275, 470));
+            entry17_3.AddRoutePoint(new Vector2(275, 230));
+            wave17.AddEntry(entry17_3);
+            WaveEntity entry17_4 = new WaveEntity(new Vector2(170, 490));
+            entry17_4.AddRoutePoint(new Vector2(170, 210));
+            wave17.AddEntry(entry17_4);
+            WaveEntity entry17_5 = new WaveEntity(new Vector2(310, 490));
+            entry17_5.AddRoutePoint(new Vector2(310, 210));
+            wave17.AddEntry(entry17_5);
+            WaveEntity entry17_6 = new WaveEntity(new Vector2(135, 510));
+            entry17_6.AddRoutePoint(new Vector2(135, 190));
+            wave17.AddEntry(entry17_6);
+            WaveEntity entry17_7 = new WaveEntity(new Vector2(345, 510));
+            entry17_7.AddRoutePoint(new Vector2(345, 190));
+            wave17.AddEntry(entry17_7);
+            WaveEntity entry17_8 = new WaveEntity(new Vector2(100, 530));
+            entry17_8.AddRoutePoint(new Vector2(100, 170));
+            wave17.AddEntry(entry17_8);
+            WaveEntity entry17_9 = new WaveEntity(new Vector2(380, 530));
+            entry17_9.AddRoutePoint(new Vector2(380, 170));
+            wave17.AddEntry(entry17_9);
+            WaveEntity entry17_10 = new WaveEntity(new Vector2(65, 550));
+            entry17_10.AddRoutePoint(new Vector2(65, 150));
+            wave17.AddEntry(entry17_10);
+            WaveEntity entry17_11 = new WaveEntity(new Vector2(415, 550));
+            entry17_11.AddRoutePoint(new Vector2(415, 150));
+            wave17.AddEntry(entry17_11);
+            waves.Add(wave17);
+
+            Wave wave18 = new Wave();
+            WaveEntity entry18_1 = new WaveEntity(new Vector2(240, 540));
+            entry18_1.AddRoutePoint(new Vector2(240, 250));
+            wave18.AddEntry(entry18_1);
+            WaveEntity entry18_2 = new WaveEntity(new Vector2(205, 560));
+            entry18_2.AddRoutePoint(new Vector2(205, 230));
+            wave18.AddEntry(entry18_2);
+            WaveEntity entry18_3 = new WaveEntity(new Vector2(275, 560));
+            entry18_3.AddRoutePoint(new Vector2(275, 230));
+            wave18.AddEntry(entry18_3);
+            WaveEntity entry18_4 = new WaveEntity(new Vector2(170, 540));
+            entry18_4.AddRoutePoint(new Vector2(170, 210));
+            wave18.AddEntry(entry18_4);
+            WaveEntity entry18_5 = new WaveEntity(new Vector2(310, 540));
+            entry18_5.AddRoutePoint(new Vector2(310, 210));
+            wave18.AddEntry(entry18_5);
+            WaveEntity entry18_6 = new WaveEntity(new Vector2(135, 560));
+            entry18_6.AddRoutePoint(new Vector2(135, 190));
+            wave18.AddEntry(entry18_6);
+            WaveEntity entry18_7 = new WaveEntity(new Vector2(345, 560));
+            entry18_7.AddRoutePoint(new Vector2(345, 190));
+            wave18.AddEntry(entry18_7);
+            WaveEntity entry18_8 = new WaveEntity(new Vector2(100, 540));
+            entry18_8.AddRoutePoint(new Vector2(100, 170));
+            wave18.AddEntry(entry18_8);
+            WaveEntity entry18_9 = new WaveEntity(new Vector2(380, 540));
+            entry18_9.AddRoutePoint(new Vector2(380, 170));
+            wave18.AddEntry(entry18_9);
+            WaveEntity entry18_10 = new WaveEntity(new Vector2(65, 560));
+            entry18_10.AddRoutePoint(new Vector2(65, 150));
+            wave18.AddEntry(entry18_10);
+            WaveEntity entry18_11 = new WaveEntity(new Vector2(415, 560));
+            entry18_11.AddRoutePoint(new Vector2(415, 150));
+            wave18.AddEntry(entry18_11);
+            waves.Add(wave18);
+
+            Wave wave19 = new Wave();
+            WaveEntity entry19_1 = new WaveEntity(new Vector2(50, 150));
+            entry19_1.AddRoutePoint(new Vector2(430, 150));
+            wave19.AddEntry(entry19_1);
+            WaveEntity entry19_2 = new WaveEntity(new Vector2(430, 200));
+            entry19_2.AddRoutePoint(new Vector2(50, 200));
+            wave19.AddEntry(entry19_2);
+            WaveEntity entry19_3 = new WaveEntity(new Vector2(50, 250));
+            entry19_3.AddRoutePoint(new Vector2(430, 250));
+            wave19.AddEntry(entry19_3);
+            WaveEntity entry19_4 = new WaveEntity(new Vector2(430, 300));
+            entry19_4.AddRoutePoint(new Vector2(50, 300));
+            wave19.AddEntry(entry19_4);
+            WaveEntity entry19_5 = new WaveEntity(new Vector2(50, 350));
+            entry19_5.AddRoutePoint(new Vector2(430, 350));
+            wave19.AddEntry(entry19_5);
+            WaveEntity entry19_6 = new WaveEntity(new Vector2(430, 400));
+            entry19_6.AddRoutePoint(new Vector2(50, 400));
+            wave19.AddEntry(entry19_6);
+            WaveEntity entry19_7 = new WaveEntity(new Vector2(50, 450));
+            entry19_7.AddRoutePoint(new Vector2(430, 450));
+            wave19.AddEntry(entry19_7);
+            WaveEntity entry19_8 = new WaveEntity(new Vector2(430, 500));
+            entry19_8.AddRoutePoint(new Vector2(50, 500));
+            wave19.AddEntry(entry19_8);
+            WaveEntity entry19_9 = new WaveEntity(new Vector2(50, 550));
+            entry19_9.AddRoutePoint(new Vector2(430, 550));
+            wave19.AddEntry(entry19_9);
+            WaveEntity entry19_10 = new WaveEntity(new Vector2(430, 600));
+            entry19_10.AddRoutePoint(new Vector2(50, 600));
+            wave19.AddEntry(entry19_10);
+            WaveEntity entry19_11 = new WaveEntity(new Vector2(50, 650));
+            entry19_11.AddRoutePoint(new Vector2(430, 650));
+            wave19.AddEntry(entry19_11);
+            waves.Add(wave19);
         }
 
         public void SpawnEnemy(WaveEntity waveEntry, EnemyType type)
@@ -727,11 +905,6 @@ namespace ScribbleHunter
             this.nextSingleEnemyMinTimer = InitialNextSingleEnemyMinTimer;
             this.nextSingleEnemyMaxTimer = InitialNextSingleEnemyMaxTimer;
 
-            for (int i = 0; i < waveSpawns.Count; i++)
-            {
-                waveSpawns[i] = new WaveInfo(0, EnemyType.Easy);
-            }
-
             this.IsActive = true;
         }
 
@@ -760,6 +933,7 @@ namespace ScribbleHunter
         {
             // Enemies
             int enemiesCount = Int32.Parse(reader.ReadLine());
+            Enemies.Clear();
 
             for (int i = 0; i < enemiesCount; ++i)
             {
@@ -805,17 +979,6 @@ namespace ScribbleHunter
             this.nextSingleEnemyMinTimer = Single.Parse(reader.ReadLine());
             this.nextSingleEnemyMaxTimer = Single.Parse(reader.ReadLine());
 
-            // Wave spawns
-            int waveSpawnsCount = Int32.Parse(reader.ReadLine());
-
-            for (int i = 0; i < waveSpawnsCount; ++i)
-            {
-                int idx = Int32.Parse(reader.ReadLine());
-                WaveInfo waveInfo = new WaveInfo();
-                waveInfo.Activated(reader);
-                waveSpawns[idx] = waveInfo;
-            }
-
             this.IsActive = Boolean.Parse(reader.ReadLine());
 
             this.currentLevel = Int32.Parse(reader.ReadLine());
@@ -842,15 +1005,6 @@ namespace ScribbleHunter
             writer.WriteLine(nextSingleEnemyTimer);
             writer.WriteLine(nextSingleEnemyMinTimer);
             writer.WriteLine(nextSingleEnemyMaxTimer);
-
-            // Wave spawns
-            writer.WriteLine(waveSpawns.Count);
-
-            foreach (var waveSpawn in waveSpawns)
-            {
-                writer.WriteLine(waveSpawn.Key);
-                waveSpawn.Value.Deactivated(writer);
-            }
 
             writer.WriteLine(IsActive);
 

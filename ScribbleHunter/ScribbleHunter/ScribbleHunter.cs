@@ -3,7 +3,7 @@
  *         - Set up the correct app name: "ScribbleHunter" / "ScribbleHunter Free"
  * */
 
-//#define IS_FREE_VERSION
+#define IS_FREE_VERSION
 //#define SIMULATE_TRIAL
 
 using System;
@@ -680,7 +680,7 @@ namespace ScribbleHunter
                             settingsManager.SetNeutralPosition(SettingsManager.NeutralPositionValues.Angle20);
                             instructionManager.Reset();
                             instructionManager.IsAutostarted = false;
-                            updateHud();
+                            updateHud(elapsed);
                             gameState = GameStates.Instructions;
                             break;
 
@@ -731,7 +731,7 @@ namespace ScribbleHunter
                     {
                         phonePositionManager.IsActive = false;
                         resetGame();
-                        updateHud();
+                        updateHud(elapsed);
                         handManager.HideHandsAndScribble();
                         if (instructionManager.HasDoneInstructions)
                         {
@@ -743,6 +743,7 @@ namespace ScribbleHunter
                             instructionManager.IsAutostarted = true;
                             gameState = GameStates.Instructions;
                         }
+                        SoundManager.PlayPaperSound();
                     }
 
                     break;
@@ -778,11 +779,13 @@ namespace ScribbleHunter
 
                     highscoreMessageShown = false;
 
+                    zoomTextManager.Reset();
+
                     if (submissionManager.ChangeNameClicked)
                     {
                         submissionManager.ChangeNameClicked = false;
 
-                        if (!Guide.IsVisible && playerManager.PlayerScore > SCORE_SUBMIT_LIMIT)
+                        if (!Guide.IsVisible && playerManager.TotalScore > SCORE_SUBMIT_LIMIT)
                         {
                             showGuid();
                         }
@@ -805,7 +808,7 @@ namespace ScribbleHunter
 
                         submissionManager.IsActive = false;
                         resetGame();
-                        updateHud();
+                        updateHud(elapsed);
                         handManager.HideHandsAndScribble();
                         gameState = GameStates.Playing;
                     }
@@ -823,18 +826,23 @@ namespace ScribbleHunter
                     damageExplosionManager.Update(gameTime);
                     
                     collisionManager.Update();
-                    updateHud();
+                    updateHud(elapsed);
 
                     zoomTextManager.Update();
 
                     if (backButtonPressed)
                     {
-                        instructionManager.InstructionsDone();
+                        if (!instructionManager.HasDoneInstructions && instructionManager.EnougthInstructionsDone)
+                        {
+                            instructionManager.InstructionsDone();
+                            instructionManager.SaveHasDoneInstructions();
+                        }
+
                         EffectManager.Reset();
                         if (instructionManager.IsAutostarted)
                         {
                             resetGame();
-                            updateHud();
+                            updateHud(elapsed);
                             handManager.HideHandsAndScribble();
                             gameState = GameStates.Playing;
                         }
@@ -908,7 +916,7 @@ namespace ScribbleHunter
 
                     zoomTextManager.Update();
 
-                    updateHud();
+                    updateHud(elapsed);
 
                     if (levelManager.HasChanged)
                     {
@@ -922,7 +930,7 @@ namespace ScribbleHunter
                         }
                     }
 
-                    if (playerManager.PlayerScore > highscoreManager.CurrentHighscore &&
+                    if (playerManager.TotalScore > highscoreManager.CurrentHighscore &&
                         highscoreManager.CurrentHighscore != 0 &&
                        !highscoreMessageShown)
                     {
@@ -961,10 +969,10 @@ namespace ScribbleHunter
                     {
                         SoundManager.PlayPaperSound();
 
-                        if (playerManager.PlayerScore > SCORE_SUBMIT_LIMIT)
+                        if (playerManager.TotalScore > SCORE_SUBMIT_LIMIT)
                         {
                             gameState = GameStates.Submittion;
-                            submissionManager.SetUp(highscoreManager.LastName, playerManager.PlayerScore, levelManager.CurrentLevel);
+                            submissionManager.SetUp(highscoreManager.LastName, playerManager.TotalScore, levelManager.CurrentLevel);
                         }
                         else
                         {
@@ -989,17 +997,17 @@ namespace ScribbleHunter
                     collisionManager.Update();
                     zoomTextManager.Update();
 
-                    updateHud();
+                    updateHud(elapsed);
 
                     if (playerDeathTimer >= playerGameOverDelayTime)
                     {
                         playerDeathTimer = 0.0f;
                         titleScreenTimer = 0.0f;
 
-                        if (playerManager.PlayerScore > SCORE_SUBMIT_LIMIT)
+                        if (playerManager.TotalScore > SCORE_SUBMIT_LIMIT)
                         {
                             gameState = GameStates.Submittion;
-                            submissionManager.SetUp(highscoreManager.LastName, playerManager.PlayerScore, levelManager.CurrentLevel);
+                            submissionManager.SetUp(highscoreManager.LastName, playerManager.TotalScore, levelManager.CurrentLevel);
                         }
                         else
                         {
@@ -1349,11 +1357,11 @@ namespace ScribbleHunter
         /// </summary>
         private void showGuid()
         {
-            int rank = highscoreManager.GetRank(playerManager.PlayerScore);
+            int rank = highscoreManager.GetRank(playerManager.TotalScore);
 
             string text;
 
-            if (highscoreManager.IsInScoreboard(playerManager.PlayerScore))
+            if (highscoreManager.IsInScoreboard(playerManager.TotalScore))
             {
                 text = string.Format(KeyboardInLocalMessageFormatText, rank);
             }
@@ -1372,9 +1380,9 @@ namespace ScribbleHunter
                                          null);
         }
 
-        private void updateHud()
+        private void updateHud(float elapsed)
         {
-            hud.Update(levelManager.CurrentLevel);
+            hud.Update(elapsed, levelManager.CurrentLevel);
         }
 
         private static bool IsTrial

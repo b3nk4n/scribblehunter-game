@@ -18,10 +18,10 @@ namespace ScribbleHunter
         private readonly Rectangle cancelDestination = new Rectangle(245, 710,
                                                                      230, 77);
 
-        private readonly Rectangle startSource = new Rectangle(0, 400,
-                                                                  240, 80);
-        private readonly Rectangle startDestination = new Rectangle(5, 710,
-                                                                    230, 77);
+        private readonly Rectangle goSource = new Rectangle(0, 720,
+                                                            240, 80);
+        private readonly Rectangle goDestination = new Rectangle(5, 710,
+                                                                 230, 77);
 
         private static PhonePositionManager phonePositionManager;
 
@@ -38,12 +38,12 @@ namespace ScribbleHunter
         private bool cancelClicked = false;
         private bool startClicked = false;
 
-        private readonly string[] TEXT_PHONEPOSITION = {"How do you like to hold",
-                                                 "your phone?"};
+        private readonly string[] TEXT_PHONEPOSITION = {"Hold your phone",
+                                                 "to the desired position:"};
 
         public static GameInput GameInput;
         private const string CancelAction = "CancelStart";
-        private const string StartAction = "StartGame";
+        private const string GoAction = "GoGame";
 
         private readonly Rectangle[] PhoneSource = {new Rectangle(480, 0, 200, 256),
                                                     new Rectangle(680, 0, 200, 256),
@@ -57,9 +57,9 @@ namespace ScribbleHunter
         private readonly Rectangle PhoneSelectedDestination = new Rectangle(140, 350, 200, 256);
 
         private readonly Rectangle PhoneBehind1Destination = new Rectangle(190, 320, 100, 128);
-        private readonly Rectangle PhoneBehind2Destination = new Rectangle(195, 295, 90, 115);
-        private readonly Rectangle PhoneBehind3Destination = new Rectangle(200, 278, 80, 102);
-        private readonly Rectangle PhoneBehind4Destination = new Rectangle(205, 265, 70, 89);
+        private readonly Rectangle PhoneBehind2Destination = new Rectangle(197, 295, 86, 110);
+        private readonly Rectangle PhoneBehind3Destination = new Rectangle(204, 278, 72, 92);
+        private readonly Rectangle PhoneBehind4Destination = new Rectangle(211, 265, 58, 74);
 
         private readonly SettingsManager settingsManager;
 
@@ -87,10 +87,10 @@ namespace ScribbleHunter
                                            GestureType.Tap,
                                            cancelDestination);
 
-            GameInput.AddTouchGestureInput(StartAction,
+            GameInput.AddTouchGestureInput(GoAction,
                                            GestureType.Tap,
-                                           startDestination);
-            GameInput.AddTouchGestureInput(StartAction,
+                                           goDestination);
+            GameInput.AddTouchGestureInput(GoAction,
                                            GestureType.Tap,
                                            PhoneSelectedDestination);
         }
@@ -111,15 +111,12 @@ namespace ScribbleHunter
             if (GameInput.IsPressed(CancelAction))
             {
                 cancelClicked = true;
-                SoundManager.PlayPaperSound();
             }
 
             // Start
-            if (canStart && GameInput.IsPressed(StartAction))
+            if (canStart && GameInput.IsPressed(GoAction))
             {
                 startClicked = true;
-                SoundManager.PlayPaperSound();
-                
             }
         }
 
@@ -164,8 +161,8 @@ namespace ScribbleHunter
             }
 
             spriteBatch.Draw(Texture,
-                                 startDestination,
-                                 startSource,
+                                 goDestination,
+                                 goSource,
                                  startColor);
 
             for (int i = 0; i < TEXT_PHONEPOSITION.Length; i++)

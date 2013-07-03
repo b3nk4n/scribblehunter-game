@@ -1,4 +1,4 @@
-//#define IS_FREE_VERSION
+#define IS_FREE_VERSION
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -62,6 +62,10 @@ namespace ScribbleHunter
         private readonly Vector2 OFFSET_VEC_Y = new Vector2(0, 0);
 #endif
 
+        private bool canFireDisplayed = false;
+        private const float DisplayCanFireTimerLimit = 0.33f;
+        private float displayCanFireTimer = 0.0f;
+
         #endregion
 
         #region Constructors
@@ -98,11 +102,29 @@ namespace ScribbleHunter
             return hud;
         }
 
-        public void Update(int level)
+        public void Update(float elapsed, int level)
         {
             this.score = playerManager.PlayerScore;
 
             this.level = level;
+
+            if (playerManager.CanFire)
+            {
+                if (canFireDisplayed)
+                {
+                    displayCanFireTimer -= elapsed;
+                }
+                else
+                {
+                    displayCanFireTimer = DisplayCanFireTimerLimit;
+                    canFireDisplayed = true;
+                }
+            }
+            else
+            {
+                canFireDisplayed = false;
+                displayCanFireTimer = 0.0f;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -114,6 +136,8 @@ namespace ScribbleHunter
             drawUpgrades(spriteBatch);
                 
             drawPlayerReload(spriteBatch, playerManager.ShotTimer, PlayerManager.ShotTimerMin);
+
+            drawCanFire(spriteBatch);
         }
 
         private void drawScore(SpriteBatch spriteBatch)
@@ -311,6 +335,35 @@ namespace ScribbleHunter
                         ReloadBarHeight),
                     Color.Purple * 0.75f,
                     Color.White * 0.75f);
+        }
+
+        private void drawCanFire(SpriteBatch spriteBatch)
+        {
+            if (displayCanFireTimer > 0)
+            {
+                float colorFactor = MathHelper.Clamp(displayCanFireTimer / DisplayCanFireTimerLimit , 0.0f, 1.0f);
+
+                spriteBatch.Draw(
+                    texture,
+                    new Rectangle(0, 0, 480, 4),
+                    new Rectangle(0, 550, 4, 4),
+                    Color.Purple * colorFactor);
+                spriteBatch.Draw(
+                    texture,
+                    new Rectangle(0, 796, 480, 4),
+                    new Rectangle(0, 550, 4, 4),
+                    Color.Purple * colorFactor);
+                spriteBatch.Draw(
+                    texture,
+                    new Rectangle(0, 4, 4, 792),
+                    new Rectangle(0, 550, 4, 4),
+                    Color.Purple * colorFactor);
+                spriteBatch.Draw(
+                    texture,
+                    new Rectangle(476, 4, 4, 792),
+                    new Rectangle(0, 550, 4, 4),
+                    Color.Purple * colorFactor);
+            }
         }
 
         #endregion

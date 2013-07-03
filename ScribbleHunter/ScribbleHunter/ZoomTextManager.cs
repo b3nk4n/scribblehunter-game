@@ -124,6 +124,7 @@ namespace ScribbleHunter
         {
             // Texts
             int textsCount = Int32.Parse(reader.ReadLine());
+            zoomTexts.Clear();
 
             for (int i = 0; i < textsCount; ++i)
             {
@@ -134,6 +135,7 @@ namespace ScribbleHunter
 
             // Infos
             int infosCount = Int32.Parse(reader.ReadLine());
+            infoTexts.Clear();
 
             for (int i = 0; i < infosCount; ++i)
             {

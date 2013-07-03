@@ -6,8 +6,8 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ScribbleHunter")]
-[assembly: AssemblyProduct("ScribbleHunter")]
+[assembly: AssemblyTitle("ScribbleHunter Free")]
+[assembly: AssemblyProduct("ScribbleHunter Free")]
 [assembly: AssemblyDescription("Space Arcade Game")]
 [assembly: AssemblyCompany("Benjamin Sautermeister")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
@@ -32,5 +32,5 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.3.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

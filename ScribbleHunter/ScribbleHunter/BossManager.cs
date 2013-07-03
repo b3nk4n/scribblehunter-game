@@ -1,4 +1,4 @@
-//#define IS_FREE_VERSION
+#define IS_FREE_VERSION
 
 using System;
 using System.Collections.Generic;
@@ -324,6 +324,8 @@ namespace ScribbleHunter
         {
             // Bosses
             int bossesCount = Int32.Parse(reader.ReadLine());
+
+            Bosses.Clear();
 
             for (int i = 0; i < bossesCount; ++i)
             {
