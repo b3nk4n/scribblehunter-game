@@ -18,6 +18,8 @@ using System.IO.IsolatedStorage;
 using System.IO;
 using ScribbleHunter.Inputs;
 using Microsoft.Advertising.Mobile.Xna;
+using AdDuplex.Xna;
+using ScribbleHunter.Nokia;
 
 namespace ScribbleHunter
 {
@@ -39,8 +41,10 @@ namespace ScribbleHunter
         /// <summary>
         /// Advertising stuff
         /// </summary>
-        static AdGameComponent adGameComponent;
-        static DrawableAd bannerAd;
+        private AdGameComponent adGameComponent;
+        private DrawableAd bannerAd;
+        private AdManager dpManager;
+        private bool isAdDuplexActive = false;
         private bool bannerLoaded;
         private readonly Rectangle BannerDummySource = new Rectangle(1100, 600, 480, 80);
 #endif
@@ -197,6 +201,9 @@ namespace ScribbleHunter
 
             loadVersion();
 
+            // Call this on launch to initialise the feedback helper
+            FeedbackHelper.Default.Initialise();
+
             base.Initialize();
         }
 
@@ -347,17 +354,29 @@ namespace ScribbleHunter
             PhonePositionManager.GameInput = gameInput;
 
             setupInputs();
+
+#if IS_FREE_VERSION
+            // ad duplex
+            dpManager = new AdManager(this, "62583");
+            dpManager.LoadContent();
+#endif
         }
 
 #if IS_FREE_VERSION
         void bannerAd_ErrorOccurred(object sender, Microsoft.Advertising.AdErrorEventArgs e)
         {
             bannerLoaded = false;
+
+            // If loading of banner is failed, load an ad duplex banner.
+            isAdDuplexActive = true;
         }
 
         void bannerAd_AdRefreshed(object sender, EventArgs e)
         {
             bannerLoaded = true;
+
+            // If loading of MS banner succeeded, disable ad duplex banner.
+            isAdDuplexActive = false;
         }
 #endif
 
@@ -493,6 +512,10 @@ namespace ScribbleHunter
         ///// </summary>
         void GameActivated(object sender, ActivatedEventArgs e)
         {
+            // no reload of data required, because we are activated from DORMANT state
+            if (e.IsApplicationInstancePreserved)
+                return;
+
             tryLoadGame();
         }
 
@@ -582,7 +605,7 @@ namespace ScribbleHunter
                     }
                 }
             }
-            catch (FormatException)
+            catch (Exception)
             {
                 // catch end restore in case of incompatible active/deactivate dat-files
                 this.resetGame();
@@ -1034,7 +1057,10 @@ namespace ScribbleHunter
 
 #if IS_FREE_VERSION
             // Advertisment stuff
-            adGameComponent.Update(gameTime);
+            if (isAdDuplexActive)
+                dpManager.Update(gameTime);
+            else
+                adGameComponent.Update(gameTime);
 #endif
 
             base.Update(gameTime);
@@ -1231,9 +1257,17 @@ namespace ScribbleHunter
 
 #if IS_FREE_VERSION
             adGameComponent.Draw(gameTime);
+
+            if (!isAdDuplexActive)
+                adGameComponent.Draw(gameTime);
 #endif
 
             spriteBatch.End();
+
+#if IS_FREE_VERSION
+            if (isAdDuplexActive)
+                dpManager.Draw(spriteBatch, Vector2.Zero);
+#endif
 
             base.Draw(gameTime);
         }

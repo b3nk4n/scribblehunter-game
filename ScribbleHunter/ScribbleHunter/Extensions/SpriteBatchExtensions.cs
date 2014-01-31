@@ -228,6 +228,57 @@ namespace ScribbleHunter.Extensions
                                   color);
         }
 
+        public static void DrawStringBordered(this SpriteBatch spriteBatch, SpriteFont font, string text,
+            Vector2 location, Color color, float rotation, Vector2 origin, float scale, Color borderColor)
+        {
+            spriteBatch.DrawString(font,
+                                  text,
+                                  location + Border1,
+                                  borderColor,
+                                  rotation,
+                                  origin,
+                                  scale,
+                                  SpriteEffects.None,
+                                  0.0f);
+            spriteBatch.DrawString(font,
+                                  text,
+                                  location + Border2,
+                                  borderColor,
+                                  rotation,
+                                  origin,
+                                  scale,
+                                  SpriteEffects.None,
+                                  0.0f);
+            spriteBatch.DrawString(font,
+                                  text,
+                                  location + Border3,
+                                  borderColor,
+                                  rotation,
+                                  origin,
+                                  scale,
+                                  SpriteEffects.None,
+                                  0.0f);
+            spriteBatch.DrawString(font,
+                                  text,
+                                  location + Border4,
+                                  borderColor,
+                                  rotation,
+                                  origin,
+                                  scale,
+                                  SpriteEffects.None,
+                                  0.0f);
+
+            spriteBatch.DrawString(font,
+                                  text,
+                                  location,
+                                  color,
+                                  rotation,
+                                  origin,
+                                  scale,
+                                  SpriteEffects.None,
+                                  0.0f);
+        }
+
         public static Vector2 DrawInt64WithZerosBordered(this SpriteBatch spriteBatch, SpriteFont font, long number,
             Vector2 location, Color color, Color borderColor, int zeros)
         {

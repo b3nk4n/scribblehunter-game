@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
+using ScribbleHunter.Extensions;
 
 namespace ScribbleHunter
 {
@@ -83,30 +84,28 @@ namespace ScribbleHunter
         {
             foreach (var zoom in zoomTexts)
             {
-                spriteBatch.DrawString(bigFont,
-                                       zoom.text,
-                                       zoom.Location,
-                                       zoom.drawColor * (float)(1.0f - Math.Pow(zoom.Progress, 4.0f)),
-                                       0.0f,
-                                       new Vector2(bigFont.MeasureString(zoom.text).X / 2,
-                                                   bigFont.MeasureString(zoom.text).Y / 2),
-                                       zoom.Scale,
-                                       SpriteEffects.None,
-                                       0.0f);
+                spriteBatch.DrawStringBordered(bigFont,
+                                           zoom.text,
+                                           zoom.Location,
+                                           zoom.drawColor * (float)(1.0f - Math.Pow(zoom.Progress, 4.0f)),
+                                           0.0f,
+                                           new Vector2(bigFont.MeasureString(zoom.text).X / 2,
+                                                       bigFont.MeasureString(zoom.text).Y / 2),
+                                           zoom.Scale,
+                                           Color.White * (float)(1.0f - Math.Pow(zoom.Progress, 4.0f)));
             }
 
             foreach (var info in infoTexts)
             {
-                spriteBatch.DrawString(bigFont,
-                                       info.text,
-                                       info.Location,
-                                       info.drawColor * (float)(1.0f - Math.Pow(info.Progress, 4.0f)),
-                                       0.0f,
-                                       new Vector2(bigFont.MeasureString(info.text).X / 2,
-                                                   bigFont.MeasureString(info.text).Y / 2),
-                                       info.Scale,
-                                       SpriteEffects.None,
-                                       0.0f);
+                spriteBatch.DrawStringBordered(bigFont,
+                                           info.text,
+                                           info.Location,
+                                           info.drawColor * (float)(1.0f - Math.Pow(info.Progress, 4.0f)),
+                                           0.0f,
+                                           new Vector2(bigFont.MeasureString(info.text).X / 2,
+                                                       bigFont.MeasureString(info.text).Y / 2),
+                                           info.Scale,
+                                           Color.White * (float)(1.0f - Math.Pow(info.Progress, 4.0f)));
             }
         }
 

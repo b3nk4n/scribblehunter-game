@@ -63,7 +63,7 @@ namespace ScribbleHunter
 #endif
 
         private bool canFireDisplayed = false;
-        private const float DisplayCanFireTimerLimit = 0.33f;
+        private const float DisplayCanFireTimerLimit = 0.5f;
         private float displayCanFireTimer = 0.0f;
 
         #endregion
